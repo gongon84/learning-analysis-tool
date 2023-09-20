@@ -1,1 +1,1 @@
-# learning-golangci
+* [code climate](https://codeclimate.com/)
