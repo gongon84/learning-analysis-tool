@@ -1,22 +1,39 @@
-name: golangci-test-report
+name: CI
 
 on:
   push:
 
-jobs:
+permissions:
+  contents: read
 
-  test:
-    name: Run tests
+jobs:
+  # golangci-lint
+  golangci:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-go@v3
+        with:
+          go-version: ^1.20
+      - uses: actions/checkout@v3
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
+
+  # codeclimate test report
+  cc-test:
+    name: Test-report
     runs-on: ubuntu-latest
     steps:
 
     - name: Set up Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
         go-version: ^1.20
 
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Get dependencies
       run: go mod download
