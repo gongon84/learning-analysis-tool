@@ -25,6 +25,9 @@ jobs:
       run: |
         go get github.com/axw/gocov/gocov
         go get github.com/AlekSi/gocov-xml
+    
+    - name: Add GOPATH/bin to PATH
+      run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
     - name: Test with coverage
       run: go test -v -covermode=count -coverprofile=coverage.out ./go/domains/...
