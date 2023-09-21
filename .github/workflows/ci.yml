@@ -19,8 +19,11 @@ jobs:
     - name: Test and Coverage
       run: go test -coverprofile=coverage.out ./go/domains/...
 
+    - name: Install gocov-lcov
+      run: go get github.com/jandelgado/gocov-lcov
+
     - name: Convert to LCOV
-      run: go tool cover -func=coverage.out -o coverage.lcov
+      run: gocov-lcov -infile=coverage.out -outfile=coverage.lcov
 
     - name: Upload coverage to Code Climate
       run: |
