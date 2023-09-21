@@ -1,0 +1,33 @@
+## code climate 側でチェックしてることと一番関係高い部分をカスタムで入れてます。
+linters-settings:
+  nestif:
+    # minimal complexity of if statements to report, 5 by default
+    min-complexity: 4
+  gocognit:
+    # minimal code complexity to report, 30 by default (but we recommend 10-20)
+    min-complexity: 20
+  gofmt:
+    # simplify code: gofmt with `-s` option, true by default
+    simplify: true
+  nakedret:
+    # make an issue if func has more lines of code than this setting and it has naked returns; default is 30
+    max-func-lines: 100
+
+issues:
+  # Excluding configuration per-path, per-linter, per-text and per-source
+  # テストコードの場合除外する。
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+        - gocognit
+        - nestif
+        - gofmt
+linters:
+  # 利用するLinter
+  enable:
+    - nestif
+    - gocognit
+    - gofmt
+    - nakedret
+  fast: false
