@@ -1,4 +1,4 @@
-name: Go
+name: golangci-test-report
 
 on:
   push:
@@ -21,8 +21,17 @@ jobs:
     - name: Get dependencies
       run: go mod download
 
+    - name: Install coverage tools
+      run: |
+        go get github.com/axw/gocov/gocov
+        go get github.com/AlekSi/gocov-xml
+
     - name: Test with coverage
-      run: go test -v -coverprofile=coverage.out ./go/domains/...
+      run: go test -v -covermode=count -coverprofile=coverage.out ./go/domains/...
+
+    - name: Convert to Cobertura format
+      run: |
+        gocov convert coverage.out | gocov-xml > coverage.xml
 
     - name: Send coverage to CodeClimate
       env:
@@ -31,4 +40,4 @@ jobs:
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         chmod +x ./cc-test-reporter
         ./cc-test-reporter before-build
-        ./cc-test-reporter after-build --exit-code $?
+        ./cc-test-reporter after-build --input-type cobertura --exit-code $?
