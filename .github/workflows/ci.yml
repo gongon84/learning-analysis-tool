@@ -19,6 +19,9 @@ jobs:
     - name: Test and Coverage
       run: go test -coverprofile=coverage.out ./go/domains/...
 
+    - name: Convert to LCOV
+      run: go tool cover -func=coverage.out -o coverage.lcov
+
     - name: Upload coverage to Code Climate
       run: |
         # Code Climate test-reporter をダウンロードして実行
