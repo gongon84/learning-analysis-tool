@@ -29,11 +29,6 @@ jobs:
     - name: Add GOPATH/bin to PATH
       run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
-    # TODO: 確認用
-    - name: Check if tools are installed
-      run: |
-        ls $(go env GOPATH)/bin
-
     - name: Test with coverage
       run: go test -v -covermode=count -coverprofile=coverage.out ./go/domains/...
 
@@ -48,4 +43,4 @@ jobs:
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         chmod +x ./cc-test-reporter
         ./cc-test-reporter before-build
-        ./cc-test-reporter after-build --input-type cobertura --exit-code $?
+        ./cc-test-reporter after-build --exit-code $?
