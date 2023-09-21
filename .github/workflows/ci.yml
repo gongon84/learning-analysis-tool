@@ -29,6 +29,11 @@ jobs:
     - name: Add GOPATH/bin to PATH
       run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
+    # TODO: 確認用
+    - name: Check if tools are installed
+      run: |
+        ls $(go env GOPATH)/bin
+
     - name: Test with coverage
       run: go test -v -covermode=count -coverprofile=coverage.out ./go/domains/...
 
