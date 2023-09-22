@@ -91,7 +91,7 @@ jobs:
       - name: Run Lighthouse CI
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: lhci autorun --collect.url=${{ steps.fetch_url.outputs.url }} > lhci.txt
+        run: lhci autorun --collect.url=${{ steps.fetch_url.outputs.url }} > lhci-log.txt
       
       - name: Extract public URL
         run: |
