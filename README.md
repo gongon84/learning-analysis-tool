@@ -2,8 +2,6 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/6deb19b3248771740587/maintainability)](https://codeclimate.com/github/gongon84/learning-golangci/maintainability)[![Test Coverage](https://api.codeclimate.com/v1/badges/6deb19b3248771740587/test_coverage)](https://codeclimate.com/github/gongon84/learning-golangci/test_coverage)[![lint status](https://github.com/goark/koyomi/workflows/lint/badge.svg)](https://github.com/gongon84/learning-golangci/actions)
 
-<br>
-
 # 概要
 * [code climate](https://codeclimate.com/)
 
@@ -27,10 +25,14 @@
 
 * CI連携
 
-    ![スクショ](https://github.com/gongon84/learning-golangci/assets/57177320/d74f43d2-8717-40b5-a0de-26af0be98a90)
+    <img src="https://github.com/gongon84/learning-golangci/assets/57177320/d74f43d2-8717-40b5-a0de-26af0be98a90" width="600">
 
 * lighthouse 計測
+    * コメント
 
-    ![スクリーンショット 2023-09-22 18 50 05](https://github.com/gongon84/learning-analysis-tool/assets/57177320/0d965d01-4a76-494f-a9e5-6e4d048c5d9d)
+       <img src="https://github.com/gongon84/learning-analysis-tool/assets/57177320/0d965d01-4a76-494f-a9e5-6e4d048c5d9d" width="500"> 
 
-    ![スクリーンショット 2023-09-22 18 50 44](https://github.com/gongon84/learning-analysis-tool/assets/57177320/3f298c16-05be-409f-a374-a399638940f1)
+    * 計測結果
+
+       <img src="https://github.com/gongon84/learning-analysis-tool/assets/57177320/3f298c16-05be-409f-a374-a399638940f1" width="500">
+  
