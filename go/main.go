@@ -11,7 +11,7 @@ import (
 func main() {
 	e := echo.New()
 	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "1 + 4 = "+strconv.Itoa(domains.Add(1, 4)))
+		return c.HTML(http.StatusOK, "<html><body>1 + 4 = "+strconv.Itoa(domains.Add(1, 4))+"</body></html>")
 	})
 	e.Logger.Fatal(e.Start(":8080"))
 }
