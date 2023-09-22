@@ -3,12 +3,12 @@ module.exports = {
     collect: {
       url: ['http://localhost:8080/'],
       startServerCommand: 'go run ./go/main.go',
-    },
-    settings: {
-      extraHeaders: {
-        'ngrok-skip-browser-warning': 'true',
-        'User-Agent': 'Custom User-Agent'
-      }
+      settings: {
+        extraHeaders: {
+          'ngrok-skip-browser-warning': 'true',
+          'User-Agent': 'Custom User-Agent'
+        }
+      },
     },
     upload: {
       target: 'temporary-public-storage',
