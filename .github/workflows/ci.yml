@@ -67,14 +67,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - name: npm install, build
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Start server
+        run: go run ./go/main.go &
+        sleep 10 # サーバーが起動するまで待機
+      
+      - name: Install ngrok and start tunnel
         run: |
-          npm install
-      - name: run Lighthouse CI
-        run: |
-          npm install -g @lhci/cli@0.12.x
-          lhci autorun
+          npm install -g ngrok
+          ngrok http 8080 > /dev/null & 
+          sleep 10 # ngrokがトンネルを確立するまで待機
+
+      - name: Fetch public URL
+        id: fetch_url
+        run: echo "::set-output name=url::$(curl -s http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')"
+
+      - name: Install Lighthouse CLI
+        run: npm install -g @lhci/cli@0.12.x
+
+      - name: Run Lighthouse CI
+        run: lhci autorun --collect.url=${{ steps.fetch_url.outputs.url }}
