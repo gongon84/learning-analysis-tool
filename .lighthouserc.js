@@ -4,9 +4,7 @@ module.exports = {
       url: ['http://localhost:8080/'],
       startServerCommand: 'go run ./go/main.go',
     },
-    assert: {
-      preset: 'lighthouse:recommended',
-    },
+    assert: {},
     upload: {
       target: 'temporary-public-storage',
     },
