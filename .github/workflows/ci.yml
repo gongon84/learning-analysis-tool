@@ -99,16 +99,17 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Comment on PR
+    - name: Create comments
       run: |
-        PR_NUMBER=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/pulls?state=open | jq '.[] | select(.head.sha=="${{ github.sha }}") | .number')
-        if [[ ! -z "$PR_NUMBER" ]]; then
-          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-               -X POST -d '{"body":"テスト"}' \
-               https://api.github.com/repos/${{ github.repository }}/issues/$PR_NUMBER/comments
-        fi
+        cat << EOF > comments
+        1st
+        2nd
+        3rd
+        EOF
+
+    - name: Post comments
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        URL: ${{ github.event.pull_request.html_url }}
+      run:
+        gh pr comment -F ./comments "${URL}"
