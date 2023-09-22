@@ -17,7 +17,7 @@
 
 * [lighthouse-ci](https://github.com/GoogleChrome/lighthouse-ci)
 
-    * プルリクエストへのコメント（!github run lh）をトリガーに以下を実行
+    * プルリクエストへのコメント（/run lighthouse）をトリガーに以下を実行
         * lighthouseでサイトパフォーマンスを計測（ngrokで一時公開したものを計測）
         * 計測結果のURLをプルリクでコメントしてくれる
 
