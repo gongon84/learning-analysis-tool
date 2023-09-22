@@ -91,15 +91,20 @@ jobs:
       - name: Run Lighthouse CI
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: lhci autorun --collect.url=${{ steps.fetch_url.outputs.url }}
+        run: lhci autorun --collect.url=${{ steps.fetch_url.outputs.url }} > lhci.txt
       
-      - name: Create comments
+      - name: Extract public URL
+        run: |
+          URL=$(grep -o "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/[^ ]*" lhci-log.txt)
+          echo "LHCI_PUBLIC_URL=$URL" >> $GITHUB_ENV
+      
+      - name: Create PRcomments
         run: |
           cat << EOF > comments
-          lighthouse計測結果 : ${{ steps.fetch_url.outputs.url }}
+          lighthouse計測結果 : $GITHUB_ENV
           EOF
 
-      - name: Post comments
+      - name: Post PRcomments
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           URL: ${{ github.event.pull_request.html_url }}
