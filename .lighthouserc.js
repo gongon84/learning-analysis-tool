@@ -5,8 +5,7 @@ module.exports = {
       startServerCommand: 'go run ./go/main.go',
       settings: {
         extraHeaders: {
-          'ngrok-skip-browser-warning': 'true',
-          'User-Agent': 'Custom User-Agent'
+          'ngrok-skip-browser-warning': 'true', // ngrokの警告ページ回避のため
         }
       },
     },
