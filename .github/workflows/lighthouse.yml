@@ -12,6 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Post Start CI On PR comments
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.html_url }}
+        run:
+          gh pr comment -b "lighthouseの計測を開始します" "${{ github.event.issue.pull_request.html_url }}"
         
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
@@ -56,7 +63,7 @@ jobs:
           $LHCI_PUBLIC_URL
           EOF
 
-      - name: Post PRcomments
+      - name: Post Result On PR comments
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           URL: ${{ github.event.pull_request.html_url }}
