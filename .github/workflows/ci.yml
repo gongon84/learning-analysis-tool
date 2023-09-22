@@ -95,3 +95,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: lhci autorun --collect.url=${{ steps.fetch_url.outputs.url }}
+
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Comment on PR
+      run: |
+        PR_NUMBER=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/pulls?state=open | jq '.[] | select(.head.sha=="${{ github.sha }}") | .number')
+        if [[ ! -z "$PR_NUMBER" ]]; then
+          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               -X POST -d '{"body":"テスト"}' \
+               https://api.github.com/repos/${{ github.repository }}/issues/$PR_NUMBER/comments
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
