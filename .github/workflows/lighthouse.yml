@@ -7,10 +7,9 @@ on:
 
 jobs:
   lighthouse-ci:
-    if: (github.event.issue.pull_request != null) && github.event.comment.body == '!github run lh'
     name: lighthouse-ci
+    if: (github.event.issue.pull_request != null) && github.event.comment.body == 'run lh'
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
         
