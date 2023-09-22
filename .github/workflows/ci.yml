@@ -77,14 +77,12 @@ jobs:
         run: npm install
         
       - name: Start server
-        run: go run ./go/main.go &
-        sleep 10 # サーバーが起動するまで待機
+        run: go run ./go/main.go & sleep 10
       
       - name: Install ngrok and start tunnel
         run: |
           npm install -g ngrok
-          ngrok http 8080 > /dev/null & 
-          sleep 10 # ngrokがトンネルを確立するまで待機
+          ngrok http 8080 > /dev/null & sleep 10
 
       - name: Fetch public URL
         id: fetch_url
