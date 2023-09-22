@@ -2,7 +2,7 @@ module.exports = {
   ci: {
     collect: {
       url: ['http://localhost:8080/'],
-      startServerCommand: 'npm run start',
+      startServerCommand: 'go run ./go/main.go',
     },
     assert: {
       preset: 'lighthouse:recommended',
