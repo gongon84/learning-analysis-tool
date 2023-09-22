@@ -89,7 +89,8 @@ jobs:
         run: echo "::set-output name=url::$(curl -s http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')"
 
       - name: Set ngrok header to skip warning
-        run: curl -H "ngrok-skip-browser-warning: true" ${{ steps.fetch_url.outputs.url }}
+        run: |
+          curl -H "ngrok-skip-browser-warning: true" ${{ steps.fetch_url.outputs.url }}
 
       - name: Install Lighthouse CLI
         run: npm install -g @lhci/cli@0.12.x
