@@ -101,7 +101,8 @@ jobs:
       - name: Create PRcomments
         run: |
           cat << EOF > comments
-          [Lighthouse-bot] 計測結果 : $LHCI_PUBLIC_URL
+          [Lighthouse 計測結果]
+          $LHCI_PUBLIC_URL
           EOF
 
       - name: Post PRcomments
