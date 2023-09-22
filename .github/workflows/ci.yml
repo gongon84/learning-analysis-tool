@@ -77,4 +77,4 @@ jobs:
       - name: run Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.12.x
-          lhci healthcheck --fatal
+          lhci autorun
