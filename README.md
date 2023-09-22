@@ -1,25 +1,26 @@
-<br>
+# ステータス
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/6deb19b3248771740587/maintainability)](https://codeclimate.com/github/gongon84/learning-golangci/maintainability)[![Test Coverage](https://api.codeclimate.com/v1/badges/6deb19b3248771740587/test_coverage)](https://codeclimate.com/github/gongon84/learning-golangci/test_coverage)[![lint status](https://github.com/goark/koyomi/workflows/lint/badge.svg)](https://github.com/gongon84/learning-golangci/actions)
+  
+<br>
 
 # 概要
+* [lighthouse-ci](https://github.com/GoogleChrome/lighthouse-ci)
+
+    * プルリクエストへのコメント（/run lighthouse）をトリガーに以下が実行される
+        * lighthouseでサイトパフォーマンスを計測（ngrokで一時公開したものを計測）
+        * 計測結果のURLをプルリクでコメントしてくれる
+
 * [code climate](https://codeclimate.com/)
 
-    * 保守性
-        * コードの保守性を評価。適宜コメントで指摘をしてくれる
+    * コードの保守性を評価。適宜コメントで指摘をしてくれる
     
-    * テストカバレッジ
-        * テストカバレッジを計測し表示。
+    * テストカバレッジを計測し表示。
 
 * [golangci-lint]()
     
-    * linterが実行される
+    * push時にlinterが実行
 
-* [lighthouse-ci](https://github.com/GoogleChrome/lighthouse-ci)
-
-    * プルリクエストへのコメント（/run lighthouse）をトリガーに以下を実行
-        * lighthouseでサイトパフォーマンスを計測（ngrokで一時公開したものを計測）
-        * 計測結果のURLをプルリクでコメントしてくれる
 
 # キャプチャ
 
@@ -30,7 +31,7 @@
 * lighthouse 計測
     * コメント
 
-       <img src="https://github.com/gongon84/learning-analysis-tool/assets/57177320/0d965d01-4a76-494f-a9e5-6e4d048c5d9d" width="500"> 
+       <img src="https://github.com/gongon84/learning-analysis-tool/assets/57177320/be6b2706-1d33-4f15-bf35-3632e31ee211" width="500"> 
 
     * 計測結果
 
