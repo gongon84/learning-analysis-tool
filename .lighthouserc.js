@@ -7,5 +7,6 @@ module.exports = {
     upload: {
       target: 'temporary-public-storage',
     },
+    githubAppToken: process.env.GITHUB_TOKEN,
   },
 };
