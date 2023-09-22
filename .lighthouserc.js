@@ -7,6 +7,7 @@ module.exports = {
     settings: {
       extraHeaders: {
         'ngrok-skip-browser-warning': 'true',
+        'User-Agent': 'Custom User-Agent'
       }
     },
     upload: {
