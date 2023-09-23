@@ -45,9 +45,6 @@ jobs:
 
     - name: Test with coverage
       run: go test -v -covermode=count -coverprofile=coverage.out ./go/domains/...
-    
-    - name: create report with octocov
-      uses: k1LoW/octocov-action@v0
 
     - name: Convert to Cobertura format
       run: |
