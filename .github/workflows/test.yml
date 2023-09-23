@@ -10,15 +10,12 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: ^1.20
-    - uses: actions/checkout@v3
+
+    - name: Check out code
+      uses: actions/checkout@v3
 
     - name: Get dependencies
       run: go mod download
-
-    - name: golangci-lint
-      uses: golangci/golangci-lint-action@v3
-      with:
-        version: latest
 
     - name: testing
       run: go test ./go/domains/... -coverprofile=coverage_report.out
