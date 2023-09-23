@@ -12,7 +12,6 @@ testExecutionTime:
 comment:
   if: is_pull_request
 report:
-  if: is_default_branch
   datastores:
     - artifact://${GITHUB_REPOSITORY}
 diff:
