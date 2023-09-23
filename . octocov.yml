@@ -1,0 +1,28 @@
+coverage:
+  # カバレッジが70%未満だったとき処理がexist status 1で終了する
+  acceptable: 70%
+codeToTestRatio:
+  # Code to Test Ratioが1:1.1未満だったとき処理がexist status 1で終了する
+  acceptable: 1:1.1
+  # 実装コードとしてカウントするソースコードを指定。GitHub Actionsの `paths:` の設定と同じような動きをします
+  # See https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#example-using-positive-and-negative-patterns-1
+  code:
+    - '**/*.go'
+    - '!**/*_test.go'
+  test:
+    - '**/*_test.go'
+testExecutionTime:
+  # テスト実行時間が3分を超えていたとき処理がexist status 1で終了する
+  acceptable: 3 min
+diff:
+  # コードメトリクスの差分を計測するときの比較元データストア
+  datastores:
+    - bq://project-xxxx/xxxx/github_coverages
+comment:
+  if: is_pull_request
+  hideFooterLink: false
+report:
+  if: is_default_branch
+  # コードメトリクスのレポートを保存するためのデータストア
+  datastores:
+    - bq://project-xxxx/xxxx/github_coverages
