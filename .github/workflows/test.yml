@@ -1,0 +1,27 @@
+name: Test
+on:
+  push:
+jobs:
+  golang-test:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: ^1.20
+    - uses: actions/checkout@v3
+
+    - name: Get dependencies
+      run: go mod download
+
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v3
+      with:
+        version: latest
+
+    - name: testing
+      run: go test ./go/domains/... -coverprofile=coverage_report.out
+
+    - name: create report
+      uses: k1LoW/octocov-action@v0
