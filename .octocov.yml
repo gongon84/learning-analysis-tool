@@ -3,6 +3,7 @@ coverage:
     - coverage.out
   badge:
     path: docs/coverage.svg
+  push:
 codeToTestRatio:
   code:
     - '**/*.go'
