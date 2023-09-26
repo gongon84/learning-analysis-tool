@@ -3,7 +3,6 @@ coverage:
     - coverage.out
   badge:
     path: docs/coverage.svg
-  push:
 codeToTestRatio:
   code:
     - '**/*.go'
@@ -19,7 +18,7 @@ testExecutionTime:
 comment:
   if: is_pull_request
 report:
-  # if: is_default_branch
+  if: is_default_branch
   datastores:
     - artifact://${GITHUB_REPOSITORY}
 diff:
